@@ -29,8 +29,6 @@ public class Tower : MonoBehaviour
 		attTimer = 0f;
 		isAttacking = false;
 
-		secondsPerAtt = 0.1f;
-
 		gameObject.transform.SetParent (GameObject.Find ("Towers").transform);
 	}
 	
@@ -38,13 +36,27 @@ public class Tower : MonoBehaviour
 	void Update ()
 	{
 		UpdateCurrentTarget ();
-		attTimer += secondsPerAtt * Time.deltaTime;
+		attTimer += (secondsPerAtt * Time.deltaTime);
 		if (isAttacking && currentTarget != null) {
 			FaceTarget ();
 			if (attTimer >= secondsPerAtt) {
 				LaunchAttack ();
 				attTimer = 0f;
 			}
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if (other != null & other.tag == "Enemy") {
+			targets.Add (other.gameObject);
+		}
+	}
+
+	void OnTriggerExit2D (Collider2D other)
+	{
+		if (other != null && other.tag == "Enemy") {
+			targets.Remove (other.gameObject);
 		}
 	}
 
@@ -92,19 +104,5 @@ public class Tower : MonoBehaviour
 		}
 		isAttacking = false;
 		currentTarget = null;
-	}
-
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		if (other != null & other.tag == "Enemy") {
-			targets.Add (other.gameObject);
-		}
-	}
-
-	void OnTriggerExit2D (Collider2D other)
-	{
-		if (other != null && other.tag == "Enemy") {
-			targets.Remove (other.gameObject);
-		}
 	}
 }

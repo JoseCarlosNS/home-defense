@@ -5,16 +5,19 @@ public class Enemy : MonoBehaviour
 {
 
 	public string name, description;
-	public float hp, cd, ca, spd;
+	public float maxHP, cd, ca, spd;
+	public GameObject lifeBar;
 
 	private Rigidbody2D rb2d;
-	private float spdPerSec;
+	private float spdValue;
+	private float hp;
 	// Use this for initialization
 	void Start ()
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
-		rb2d.velocity = new Vector3 (-1, 0, 0);
-		spdPerSec = 100f / spd;
+		spdValue = spd / 100;
+		rb2d.velocity = new Vector3 (-1f * spdValue, 0, 0);
+		hp = maxHP;
 	}
 
 	public void TakeDamage (int ca)
@@ -29,6 +32,8 @@ public class Enemy : MonoBehaviour
 	{
 		if (hp <= 0) {
 			Destroy (gameObject);
+		} else {
+			lifeBar.transform.localScale = new Vector3 (1, hp / maxHP, 1);
 		}
 	}
 }

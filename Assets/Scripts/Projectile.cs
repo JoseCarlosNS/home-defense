@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 	void Start ()
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
-		rb2d.velocity = direction * spd;
+		rb2d.velocity = direction * (spd / 100f);
 
 		Destroy (gameObject, 3f);
 	}
