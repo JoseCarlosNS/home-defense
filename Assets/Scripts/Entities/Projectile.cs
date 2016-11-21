@@ -17,22 +17,21 @@ public class Projectile : MonoBehaviour
 		Destroy (gameObject, 3f);
 	}
 
-	public void setDirection (Vector2 direction)
-	{
-		this.direction = direction;
+	public int Damage {
+		get {
+			return this.damage;
+		}
+		set {
+			damage = value;
+		}
 	}
 
-	public void SetDamage (int ca)
-	{
-		damage = ca;
-	}
-
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		if (other.tag == "Enemy") {
-			Enemy enemy = other.GetComponent<Enemy> ();
-			enemy.TakeDamage (damage);
-			Destroy (gameObject);
+	public Vector2 Direction {
+		get {
+			return this.direction;
+		}
+		set {
+			direction = value;
 		}
 	}
 }

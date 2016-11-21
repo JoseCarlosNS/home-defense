@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnerController : MonoBehaviour
+public class SpawnerManager : MonoBehaviour
 {
 	public GameObject[] spawners;
 	public GameObject[] enemies;

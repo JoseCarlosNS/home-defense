@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 	private static GameManager instance;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		if (instance == null) {
 			instance = this;
@@ -19,14 +19,17 @@ public class GameManager : MonoBehaviour
 
 		DontDestroyOnLoad (instance);
 	}
+
+	void Start ()
+	{
+	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-	
 	}
 
-	public GameManager GetInstance ()
+	public static GameManager GetInstance ()
 	{
 		return instance;
 	}

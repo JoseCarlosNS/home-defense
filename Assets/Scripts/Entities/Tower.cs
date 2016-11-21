@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
 	public GameObject projectilePoint;
 	public int baseCA;
 	public float baseAttSpd;
+	public float cost;
 
 	private int ca, bonusCA;
 	private float attSpd, bonusAttSpd, attTimer, secondsPerAtt;
@@ -79,8 +80,8 @@ public class Tower : MonoBehaviour
 			                                projectilePoint.transform.position,
 			                                projectilePoint.transform.rotation) as GameObject;
 		Projectile proj = projectileInstance.GetComponent<Projectile> ();
-		proj.setDirection (diff);
-		proj.SetDamage (ca);
+		proj.Direction = diff;
+		proj.Damage = ca;
 	}
 
 	void UpdateStatusValues ()
