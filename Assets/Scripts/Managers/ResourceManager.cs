@@ -6,12 +6,11 @@ public class ResourceManager : MonoBehaviour
 {
 	public Text resourceLabel;
 
-	private float resource;
+	public float resource;
 
 	// Use this for initialization
 	void Start ()
 	{
-		Resource = 20000;
 	}
 	
 	// Update is called once per frame

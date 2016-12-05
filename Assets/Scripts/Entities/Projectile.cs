@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
 		rb2d.velocity = direction * (spd / 100f);
+		transform.SetParent (GameObject.Find ("Projectiles").transform);
 
 		Destroy (gameObject, 3f);
 	}

@@ -6,6 +6,7 @@ public class SpawnerManager : MonoBehaviour
 	public GameObject[] spawners;
 	public GameObject[] enemies;
 	public float[] enemyWaitTimes;
+	public float speedIncrease;
 
 	private float[] enemyWaitCounter;
 
@@ -20,6 +21,7 @@ public class SpawnerManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		UpdateWaitTimes ();
 		UpdateCounters ();
 		for (int i = 0; i < enemyWaitCounter.Length; i++) {
 			if (enemyWaitCounter [i] >= enemyWaitTimes [i]) {
@@ -40,6 +42,13 @@ public class SpawnerManager : MonoBehaviour
 	{
 		for (int i = 0; i < enemyWaitCounter.Length; i++) {
 			enemyWaitCounter [i] += Time.deltaTime;
+		}
+	}
+
+	void UpdateWaitTimes ()
+	{
+		for (int i = 0; i < enemyWaitTimes.Length; i++) {
+			enemyWaitTimes [i] = enemyWaitTimes [i] - (enemyWaitTimes [i] * speedIncrease * Time.deltaTime);
 		}
 	}
 

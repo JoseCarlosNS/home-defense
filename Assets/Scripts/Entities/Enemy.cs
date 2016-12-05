@@ -34,7 +34,8 @@ public class Enemy : MonoBehaviour
 			TakeDamage (proj.Damage);
 			Destroy (other.gameObject);
 		} else if (other.tag == "House Area") {
-			resourceManager.Resource -= ca;
+			GameManager.GetInstance ().Health -= ca;
+			GameManager.GetInstance ().UpdateHealth ();
 			Destroy (gameObject);
 		}
 	}
